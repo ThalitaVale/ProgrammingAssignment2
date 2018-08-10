@@ -4,6 +4,9 @@
 
 # makeCacheMatrix: This function creates a special "matrix" object that can cache its inverse.
 
+# If one calls myMatrix <- makeCacheMatrix(1:15), it returns 4 functions, set, get, setInv, getInv, and
+# 2 objects, inv and x. Each function has its own environment in R.
+
 makeCacheMatrix <- function(x = matrix()) {
 
   inv <- NULL
@@ -13,7 +16,7 @@ makeCacheMatrix <- function(x = matrix()) {
   }
   
   get <- function() x
-  setInv <- function(solveM) inv <<- solveM
+  setInv <- function(solve) inv <<- solve
   getInv <- function() inv
   list(set = set, get = get,
        setInv = setInv,
